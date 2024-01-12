@@ -7,6 +7,19 @@ const apiKey: string =
 const prisma = new PrismaClient().$extends(withPulse({ apiKey: apiKey }));
 
 async function main() {
+	const subscription = await prisma.user.subscribe({
+		update: {},
+	  })
+
+	  if (subscription instanceof Error) {
+		throw subscription;
+	}
+
+	  for await (const event of subscription) {
+		console.log("DB just received an UPDATE event:", event);
+	}
+
+
 	
 	const createSubscription = await prisma.user.subscribe({
 		create: {
@@ -24,13 +37,5 @@ async function main() {
 		console.log("DB just received a CREATE event:", e);
 	}
 	
-	
-	const subscription = await prisma.user.subscribe({
-		update: {},
-	  })
-
-	  for await (const event of subscription) {
-		console.log("DB just received an UPDATE event:", event);
-	}
 }
 main();
