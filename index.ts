@@ -14,8 +14,11 @@ async function main() {
 	}
 
 	for await (const event of subscription) {
-		console.log("shez just received an event:", event);
-		console.log("ShezTest", event);
-	}
+		console.log("DB just received an event:", event);
+
+		if (event.action === "create") {
+			const newUser = event.data as { name: string; email: string };
+			console.log(`New user added - Name: ${newUser.name}, Email: ${newUser.email}`);
+		}	}
 }
 main();
