@@ -15,6 +15,7 @@ async function main() {
 
 	for await (const event of subscription) {
 		console.log("shez just received an event:", event);
+		console.log("ShezTest", event);
 	}
 }
 main();
