@@ -1,5 +1,7 @@
 # Pulse starter project
 
+connect to local test
+
 This repository has been created to help you get started with [Pulse](https://prisma.io/pulse). You will be able to use this project with any Pulse-ready PostgreSQL database. This project comes with a basic [`prisma.schema`](./prisma/schema.prisma) file as well as a Pulse subscription found in the [`index.ts`](./index.ts) file.
 
 Table of contents:
