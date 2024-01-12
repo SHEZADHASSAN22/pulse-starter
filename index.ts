@@ -15,7 +15,7 @@ async function main() {
 
 	for await (const event of subscription) {
 		console.log("DB just received an event:", event);
-		console.log(event.data);
+		console.log(event.after);
 	}
 }
 main();
