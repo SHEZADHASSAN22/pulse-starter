@@ -15,7 +15,18 @@ async function main() {
 
 	for await (const event of subscription) {
 		console.log("DB just received an event:", event);
-		console.log(event.after);
+	}
+
+	const updateEvent = await prisma.user.subscribe({
+		create: {
+		  after: {
+			name: 'Jim',
+		  },
+		},
+	  })
+
+	  for await (const event of updateEvent) {
+		console.log("DB just received an UPDATE event:", event);
 	}
 }
 main();
