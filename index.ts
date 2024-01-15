@@ -10,7 +10,7 @@ async function main() {
 	const subscription = await prisma.user.subscribe({
 		create: {
 			after: {
-			  name: 'Jim',
+			  name: 'Ben',
 			},
 		  },
 	  })
